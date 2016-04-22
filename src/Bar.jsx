@@ -24,7 +24,8 @@ let Bar = React.createClass({
              fill,
              data,
              onMouseEnter,
-             onMouseLeave} = this.props;
+             onMouseLeave,
+             onClick} = this.props;
 
         return (
                 <rect
@@ -36,6 +37,7 @@ let Bar = React.createClass({
             fill={fill}
             onMouseMove={ e => { onMouseEnter(e, data); } }
             onMouseLeave={ e => { onMouseLeave(e); } }
+            onClick={ e => { onClick && onClick(e, data); } }
                 />
         );
     }

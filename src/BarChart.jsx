@@ -39,6 +39,7 @@ let DataSet = React.createClass({
              y0,
              onMouseEnter,
              onMouseLeave,
+             onBarClick,
              groupedBars} = this.props;
 
         let bars;
@@ -56,6 +57,7 @@ let DataSet = React.createClass({
                             data={e}
                             onMouseEnter={onMouseEnter}
                             onMouseLeave={onMouseLeave}
+                            onClick={onBarClick}
                             />
                     );
                 });
@@ -74,6 +76,7 @@ let DataSet = React.createClass({
                             data={e}
                             onMouseEnter={onMouseEnter}
                             onMouseLeave={onMouseLeave}
+                            onClick={onBarClick}
                             />
                     );
                 });
@@ -137,7 +140,8 @@ let BarChart = React.createClass({
              x,
              xAxis,
              yAxis,
-             groupedBars} = this.props;
+             groupedBars,
+             onBarClick} = this.props;
 
         let [data,
              innerWidth,
@@ -152,21 +156,6 @@ let BarChart = React.createClass({
         return (
                 <div>
                 <Chart height={height} width={width} margin={margin}>
-                <DataSet
-            data={data}
-            xScale={xScale}
-            yScale={yScale}
-            colorScale={colorScale}
-            values={values}
-            label={label}
-            y={y}
-            y0={y0}
-            x={x}
-            onMouseEnter={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-            groupedBars={groupedBars}
-                />
-
                 <Axis
             className={"x axis"}
             orientation={"bottom"}
@@ -184,6 +173,23 @@ let BarChart = React.createClass({
             width={innerWidth}
             {...yAxis}
                 />
+
+                <DataSet
+            data={data}
+            xScale={xScale}
+            yScale={yScale}
+            colorScale={colorScale}
+            values={values}
+            label={label}
+            y={y}
+            y0={y0}
+            x={x}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+            onBarClick={onBarClick}
+            groupedBars={groupedBars}
+                />
+
                 { this.props.children }
                 </Chart>
 
