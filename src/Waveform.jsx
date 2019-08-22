@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
+import createReactClass from 'create-react-class';
 
 import Chart from './Chart';
 import Bar from './Bar';
@@ -30,7 +32,7 @@ const subSample = function (a, n) {
     return returnArray;
 };
 
-const DataSet = React.createClass({
+const DataSet = createReactClass({
     propTypes: {
         data: array.isRequired,
         xScale: func.isRequired,
@@ -84,7 +86,7 @@ const DataSet = React.createClass({
     }
 });
 
-const Waveform = React.createClass({
+const Waveform = createReactClass({
     mixins: [
         DefaultPropsMixin,
         HeightWidthMixin,
